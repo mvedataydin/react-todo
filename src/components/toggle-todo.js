@@ -4,9 +4,25 @@ import PropTypes from 'prop-types';
 export default class Toggle extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      active: false
+    };
   }
+  handleCLick = () => {
+    let newState = this.state.active ? false : true;
+    this.setState({ active: newState });
+  };
   render() {
-    return <i onClick={this.props.onClick} className="far fa-circle"></i>;
+    let className = this.state.active ? 'far fa-check-circle' : 'far fa-circle';
+    return (
+      <i
+        onClick={() => {
+          this.props.onClick();
+          this.handleCLick();
+        }}
+        className={className}
+      ></i>
+    );
   }
 }
 

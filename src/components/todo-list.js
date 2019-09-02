@@ -3,6 +3,7 @@ import TodoForm from './todo-form';
 import Todo from './todo';
 import Toggle from './toggle-todo';
 import Delete from './delete-todo';
+import Priority from './priority-todo';
 
 export default class TodoList extends React.Component {
   constructor(props) {
@@ -12,7 +13,6 @@ export default class TodoList extends React.Component {
     };
 
     this.deleteTodo = this.deleteTodo.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
   addTodo = todo => {
     let newTodos = [todo, ...this.state.todos];
@@ -20,7 +20,15 @@ export default class TodoList extends React.Component {
       todos: newTodos
     });
   };
-  handleClick = () => {};
+  priorityTodo = todo => {
+    let currentTodos = [...this.state.todos];
+    let index = currentTodos.indexOf(todo);
+    currentTodos[index].priority =
+      currentTodos[index].priority === 'normal' ? 'high' : 'normal';
+    console.log(currentTodos[index].priority);
+
+    this.setState({ todos: currentTodos });
+  };
   toggleTodo = todo => {
     let currentTodos = [...this.state.todos];
     let index = currentTodos.indexOf(todo);
@@ -42,6 +50,7 @@ export default class TodoList extends React.Component {
           {this.state.todos.map(todo => (
             <li key={todo.id}>
               <Toggle onClick={this.toggleTodo.bind(this, todo)} />
+              <Priority onClick={this.priorityTodo.bind(this, todo)} />
               <Todo text={todo.text} id={todo.id} />
               <Delete id={todo.id} onClick={this.deleteTodo.bind(this, todo)} />
             </li>
