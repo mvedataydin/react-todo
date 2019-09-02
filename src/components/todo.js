@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class Todo extends React.Component {
@@ -6,10 +6,16 @@ export default class Todo extends React.Component {
     super(props);
   }
   render() {
-    return <div>{this.props.text}</div>;
+    return (
+      <div>
+        {console.log(this.props)}
+        {this.props.id},{this.props.text}
+      </div>
+    );
   }
 }
 
 Todo.propTypes = {
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
 };

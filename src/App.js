@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import TodoForm from './components/todo-form.js';
+import TodoForm from './components/todo-form';
 import TodoList from './components/todo-list.js';
 
-export default class App extends Component {
+export default class App extends React.Component {
   render() {
     return (
       <div>
-        Hello from Main app
         <TodoList />
       </div>
     );

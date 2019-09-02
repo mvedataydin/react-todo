@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
 
@@ -18,6 +18,9 @@ export default class TodoForm extends React.Component {
   };
   handleSubmit = event => {
     event.preventDefault();
+    if (this.state.text === '') {
+      return null;
+    }
     this.props.onSubmit({
       id: shortid.generate(),
       text: this.state.text,
@@ -32,13 +35,13 @@ export default class TodoForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <div>
           <input
-            name="text"
             value={this.state.text}
+            name="text"
             onChange={this.handleChange}
             placeholder="todo..."
           />
         </div>
-        <button onClick={this.handleSubmit}>Add Todo</button>
+        <button onSubmit={this.handleSubmit}>Add Todo!</button>
       </form>
     );
   }

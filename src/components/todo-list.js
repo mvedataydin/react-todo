@@ -1,7 +1,6 @@
-import React from 'react';
-import TodoForm from './todo-form.js';
-import Todo from './todo.js';
-import { stringify } from 'querystring';
+import React, { Component } from 'react';
+import TodoForm from './todo-form';
+import Todo from './todo';
 
 export default class TodoList extends React.Component {
   constructor(props) {
@@ -19,9 +18,10 @@ export default class TodoList extends React.Component {
   render() {
     return (
       <div>
+        {console.log(this.state.todos)}
         <TodoForm onSubmit={this.addTodo} />
         {this.state.todos.map(todo => (
-          <Todo key={todo.id} text={todo.text} />
+          <Todo text={todo.text} id={todo.id} key={todo.id} />
         ))}
       </div>
     );
