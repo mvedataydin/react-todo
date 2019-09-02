@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import PropTypes from 'prop-types';
 
 export default class Todo extends React.Component {
@@ -6,12 +7,7 @@ export default class Todo extends React.Component {
     super(props);
   }
   render() {
-    return (
-      <div>
-        {console.log(this.props)}
-        {this.props.id},{this.props.text}
-      </div>
-    );
+    return <a>{this.props.text}</a>;
   }
 }
 

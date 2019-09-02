@@ -24,6 +24,7 @@ export default class TodoForm extends React.Component {
     this.props.onSubmit({
       id: shortid.generate(),
       text: this.state.text,
+      priority: 'normal',
       complete: false
     });
     this.setState({
