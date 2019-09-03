@@ -11,9 +11,18 @@ export default class TodoList extends React.Component {
     this.state = {
       todos: []
     };
-
-    this.deleteTodo = this.deleteTodo.bind(this);
   }
+
+  static getDerivedStateFromProps = (props, state) => {
+    if (state.todos.length !== 0) {
+      let currentState = state.todos;
+      localStorage.setItem('todos', JSON.stringify(currentState));
+    }
+    return {
+      todos: JSON.parse(localStorage.getItem('todos'))
+    };
+  };
+
   addTodo = todo => {
     let newTodos = [todo, ...this.state.todos];
     this.setState({
