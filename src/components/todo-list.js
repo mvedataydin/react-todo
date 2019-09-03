@@ -49,9 +49,9 @@ export default class TodoList extends React.Component {
         <ul>
           {this.state.todos.map(todo => (
             <li key={todo.id}>
-              <Toggle onClick={this.toggleTodo.bind(this, todo)} />
-              <Priority onClick={this.priorityTodo.bind(this, todo)} />
-              <Todo text={todo.text} id={todo.id} />
+              <Toggle onClick={this.toggleTodo.bind(this, todo)} todo={todo} />
+              <Priority onClick={this.priorityTodo.bind(this, todo)} todo={todo} />
+              <Todo text={todo.text} id={todo.id} todo={todo} />
               <Delete id={todo.id} onClick={this.deleteTodo.bind(this, todo)} />
             </li>
           ))}

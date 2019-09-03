@@ -13,7 +13,7 @@ export default class Toggle extends React.Component {
     this.setState({ active: newState });
   };
   render() {
-    let className = this.state.active ? 'far fa-check-circle' : 'far fa-circle';
+    let className = this.state.active ? 'fas fa-check-circle' : 'far fa-circle';
     return (
       <i
         onClick={() => {
