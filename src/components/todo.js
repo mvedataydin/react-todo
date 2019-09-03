@@ -12,7 +12,7 @@ export default class Todo extends React.Component {
   render() {
     // check priority and completed , add class according to situation
     let className = '';
-    className += this.props.todo.priority === 'normal' ? '' : 'red ';
+    // className += this.props.todo.priority === 'normal' ? '' : 'red ';
     className += this.props.todo.complete === false ? '' : 'green ';
     return <a className={className}>{this.props.text}</a>;
   }

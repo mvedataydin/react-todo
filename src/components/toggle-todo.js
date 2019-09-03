@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class Toggle extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false
+      active: false,
+      todo: this.props.todo
     };
   }
   handleCLick = () => {
@@ -13,7 +14,10 @@ export default class Toggle extends React.Component {
     this.setState({ active: newState });
   };
   render() {
-    let className = this.state.active ? 'fas fa-check-circle' : 'far fa-circle';
+    let className = '';
+    className += this.state.active ? 'fas fa-check-circle ' : 'far fa-circle ';
+    className += this.props.todo.priority === 'high' ? ' red ' : '';
+
     return (
       <i
         onClick={() => {
@@ -27,5 +31,6 @@ export default class Toggle extends React.Component {
 }
 
 Toggle.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  todo: PropTypes.object.isRequired
 };

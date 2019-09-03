@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
 
@@ -38,11 +38,16 @@ export default class TodoForm extends React.Component {
           <input
             value={this.state.text}
             name="text"
+            type="text"
+            autoComplete="new-todo"
             onChange={this.handleChange}
-            placeholder="todo..."
+            placeholder=" e.g. Business Meeting Today @14"
+            maxLength="70"
           />
+          <button className="button-submit" onSubmit={this.handleSubmit}>
+            <i className="fa fa-plus"></i>
+          </button>
         </div>
-        <button onSubmit={this.handleSubmit}>Add Todo!</button>
       </form>
     );
   }

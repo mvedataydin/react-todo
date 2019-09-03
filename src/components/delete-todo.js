@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class Delete extends React.Component {
@@ -7,11 +7,7 @@ export default class Delete extends React.Component {
   }
   render() {
     return (
-      <i
-        id={this.props.id}
-        onClick={this.props.onClick}
-        className="fas fa-minus-circle"
-      ></i>
+      <i id={this.props.id} onClick={this.props.onClick} className="fas fa-trash-alt"></i>
     );
   }
 }

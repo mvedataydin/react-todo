@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class Priority extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false,
-      todo: this.props.todo
+      active: false
     };
   }
   handleClick = () => {
@@ -28,6 +27,5 @@ export default class Priority extends React.Component {
 }
 
 Priority.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  todo: PropTypes.object.isRequired
+  onClick: PropTypes.func.isRequired
 };
