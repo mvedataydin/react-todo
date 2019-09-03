@@ -5,20 +5,16 @@ export default class Priority extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false
+      todos: this.props.todo
     };
   }
-  handleClick = () => {
-    let newState = this.state.active ? false : true;
-    this.setState({ active: newState });
-  };
   render() {
-    let className = this.state.active ? 'fas fa-flag red' : 'fas fa-flag';
+    let className =
+      this.state.todos.priority !== 'normal' ? 'fas fa-flag red' : 'fas fa-flag';
     return (
       <i
         onClick={() => {
           this.props.onClick();
-          this.handleClick();
         }}
         className={className}
       ></i>
@@ -27,5 +23,6 @@ export default class Priority extends React.Component {
 }
 
 Priority.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  todo: PropTypes.object.isRequired
 };

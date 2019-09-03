@@ -15,12 +15,25 @@ export default class TodoList extends React.Component {
 
   static getDerivedStateFromProps = (props, state) => {
     if (state.todos.length !== 0) {
+      console.log('TEST 1');
       let currentState = state.todos;
       localStorage.setItem('todos', JSON.stringify(currentState));
+      return { todos: currentState };
     }
-    return {
-      todos: JSON.parse(localStorage.getItem('todos'))
-    };
+    if (state.todos.length === 0 && localStorage.getItem('todos')) {
+      console.log('TEST 2');
+      console.log(localStorage.getItem('todos'));
+      return {
+        todos: JSON.parse(localStorage.getItem('todos'))
+      };
+    }
+    if (!state.todos && !localStorage.getItem('todos')) {
+      console.log('TEST 3');
+      return {
+        todos: []
+      };
+    }
+    return { todos: [] };
   };
 
   addTodo = todo => {
@@ -47,6 +60,7 @@ export default class TodoList extends React.Component {
     let index = currentTodos.indexOf(todo);
     currentTodos.splice(index, 1);
     this.setState({ todos: currentTodos });
+    localStorage.setItem('todos', JSON.stringify(currentTodos));
   };
   render() {
     return (
@@ -67,7 +81,7 @@ export default class TodoList extends React.Component {
                 <Toggle onClick={this.toggleTodo.bind(this, todo)} todo={todo} />
               </td>
               <td>
-                <Priority onClick={this.priorityTodo.bind(this, todo)} />
+                <Priority onClick={this.priorityTodo.bind(this, todo)} todo={todo} />
               </td>
               <td>
                 <Todo text={todo.text} id={todo.id} todo={todo} />

@@ -9,20 +9,16 @@ export default class Toggle extends React.Component {
       todo: this.props.todo
     };
   }
-  handleCLick = () => {
-    let newState = this.state.active ? false : true;
-    this.setState({ active: newState });
-  };
+
   render() {
     let className = '';
-    className += this.state.active ? 'fas fa-check-circle ' : 'far fa-circle ';
-    className += this.props.todo.priority === 'high' ? ' red ' : '';
+    className += this.state.todo.complete ? 'fas fa-check-circle ' : 'far fa-circle ';
+    className += this.state.todo.priority === 'high' ? ' red ' : '';
 
     return (
       <i
         onClick={() => {
           this.props.onClick();
-          this.handleCLick();
         }}
         className={className}
       ></i>
